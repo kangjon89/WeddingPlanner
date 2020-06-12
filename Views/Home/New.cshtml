@@ -1,0 +1,30 @@
+<marquee direction="scroll">
+    <img src="https://media1.tenor.com/images/abb9bb0bb79865bfc4ac963d4c30eb7a/tenor.gif?itemid=11191352" height="75" width="75">
+</marquee>
+
+@model Wedding
+
+<h1>Plan Your Wedding <a href="dashboard" class="btn btn-primary">Dashboard</a> <a href="/logout" class="btn btn-danger">Log Out</a></h1>
+<form action="/Make" method="post">
+    <div class="form-group">
+        <label asp-for="WedderOne"></label>
+        <span asp-validation-for="WedderOne"></span>
+        <input asp-for="WedderOne" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="WedderTwo"></label>
+        <span asp-validation-for="WedderTwo"></span>
+        <input asp-for="WedderTwo" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Date"></label>
+        <span asp-validation-for="Date"></span>
+        <input asp-for="Date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <span asp-validation-for="Address"></span>
+        <input asp-for="Address" class="form-control">
+    </div>
+    <input type="submit" value="Create" class="btn btn-success">
+</form>

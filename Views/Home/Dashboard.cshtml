@@ -1,0 +1,42 @@
+<marquee direction="scroll">
+    <img src="https://media1.tenor.com/images/abb9bb0bb79865bfc4ac963d4c30eb7a/tenor.gif?itemid=11191352" height="75" width="75">
+</marquee>
+
+@model List<Wedding>
+
+<h1>Welcome to the Wedding Planner <a href="/logout" class="btn btn-danger">Log Out</a></h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Wedding</th>
+            <th scope="col">Date</th>
+            <th scope="col">Guests</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var wedding in Model)
+        {
+            <tr>
+                <td><a href="/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                <td>@wedding.Date</td>
+                <td>@wedding.Assossications.Count</td>
+                @if (wedding.UserId == ViewBag.UserId)
+                {
+                    <td><a href="/delete/@wedding.WeddingId">Delete</a></td>
+                }
+                else {
+                    @if(@wedding.Assossications.All(j=>j.UserId != @ViewBag.weddingId))
+                    {
+                    <td><a href="/rsvp/@wedding.WeddingId" class="btn btn-primary">JOIN</a></td>
+                    <td><a href="/unrsvp/@wedding.WeddingId" class="btn btn-danger">LEAVE</a></td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="New"><button class="btn btn-primary">New Wedding</button></a>
+
+
